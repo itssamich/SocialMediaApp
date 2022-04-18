@@ -1,0 +1,15 @@
+nav(class="navbar navbar-expand-md navbar-dark bg-primary")
+  .container-fluid
+    a.navbar-brand(href="#")= app_title
+    button.navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#navbarSupportedContent")
+      span.navbar-toggler-icon
+    #navbarSupportedContent(class="collapse navbar-collapse")
+      ul(class="navbar-nav me-auto mb-2 mb-lg-0")
+        each val, key in {"Home": '/', "Link 1": "#", "Link 2": "#"}
+          li.nav-item
+            a(class="nav-link", href=val) #{key}
+      ul#authul(class="navbar-nav mb-2 mb-lg-0")
+          li.nav-item 
+            a(class="nav-link", href="#") Link 3
+          li.nav-item
+            a(class="nav-link", href="#") Link 4

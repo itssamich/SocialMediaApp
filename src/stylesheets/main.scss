@@ -1,0 +1,10 @@
+@import '~bootstrap/scss/bootstrap';
+$front-end-color: rgb(235, 245, 250);
+$back-end-color: rgb(65, 64, 64);
+.course-icons {
+  display: inline-block;
+  width: 300px; 
+  height: 300px; 
+  border-radius: 150px;
+  background: linear-gradient(50deg, $front-end-color 45%, $back-end-color 45%);
+}
