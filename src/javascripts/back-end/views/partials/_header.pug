@@ -1,6 +1,6 @@
 nav(class="navbar navbar-expand-md navbar-dark bg-primary")
   .container-fluid
-    a.navbar-brand(href="#")= app_title
+    a.navbar-brand(href="/")= app_title
     button.navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#navbarSupportedContent")
       span.navbar-toggler-icon
     #navbarSupportedContent(class="collapse navbar-collapse")
@@ -9,7 +9,11 @@ nav(class="navbar navbar-expand-md navbar-dark bg-primary")
           li.nav-item
             a(class="nav-link", href=val) #{key}
       ul#authul(class="navbar-nav mb-2 mb-lg-0")
+        if signedIn 
+          li#signout
+          //a(class="nav-link", href="/signout") Sign Out
+        else 
           li.nav-item 
-            a(class="nav-link", href="#") Link 3
+            a(class="nav-link", href="/signin") Sign In
           li.nav-item
-            a(class="nav-link", href="#") Link 4
+            a(class="nav-link", href="/signup") Sign Up

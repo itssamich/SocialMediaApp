@@ -6,11 +6,21 @@ require.context('../../stylesheets/', true, /\.(css|scss)$/i)
 
 // TODO
 import 'bootstrap'
-
 import React from 'react'
 import ReactDOM from 'react-dom'
-import App from './components/App'
 
-ReactDOM.render(<App course="Full stack JavaScript development" framework="the MERN stack"/>, 
-                document.querySelector('#main'))
+
+import SignInForm from './components/SignInForm'
+import SignOut from './components/SignOut'
+import SignUpForm from './components/SignUpForm'
+
+if(document.querySelector('#signin')) {
+  ReactDOM.render(<SignInForm/>, document.querySelector('#signin'))
+} else if(document.querySelector('#signup')) {
+  ReactDOM.render(<SignUpForm/>, document.querySelector('#signup'))
+} else if(document.querySelector('#signout')) {
+  ReactDOM.render(<SignOut/>, document.querySelector('#signout'))
+}
+
+//ReactDOM.render(<App/>, document.querySelector('#main'))
 
