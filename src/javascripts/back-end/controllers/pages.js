@@ -5,7 +5,7 @@ export const indexPage = (req, res, next) => {
   res.render('index')
 }
 //GET /home
-export const homePage = (req, res, next) => {
+export const homePageAPI = (req, res, next) => {
   Post.find({}).exec((err, post) => {
     if(err){
       res.json({success: false, message: "Query Failed"})
@@ -56,7 +56,7 @@ export const updateLikes = (req, res, next) => {
           res.end()
       }
       else{
-          post.votes = post.votes + 1
+          post.likes = post.likes + 1
           post.save(err => {
               if(err){
                   res.json({success: false, message: "unable to update"})
@@ -74,7 +74,7 @@ export const updateLikes = (req, res, next) => {
 export const deletePost = (req, res, next) => {
   Post.findByIdAndDelete(req.params.id, err => {
     if(err){
-      res.json({success: false, message: "Quote deletion failed"})
+      res.json({success: false, message: "post deletion failed"})
       res.end()
     }
     else{

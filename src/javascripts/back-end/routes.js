@@ -1,8 +1,7 @@
 import express from 'express'
 
-import {indexPage} from './controllers/pages'
 import {signInPage, signUpPage, signUserUpAPI, signUserInAPI, signUserOutAPI} from './controllers/users'
-import {postPage, homePage, newPost, updateLikes, deletePost, newPostAPI} from './controllers/pages'
+import {homePageAPI, indexPage, newPost, updateLikes, deletePost, newPostAPI} from './controllers/pages'
 
 
 let router = express.Router()
@@ -42,10 +41,12 @@ export function configureRoutes(app){
    ****************************************************************************/
   // TODO
 
-  
+  router.get('/api/post/all', homePageAPI)
   router.post('/api/post/new', newPostAPI)
   router.post('/api/users/signup', signUserUpAPI)
   router.post('/api/users/signin', signUserInAPI)
+  router.put('/api/post/:id/like', updateLikes)
+  router.delete('/api/post/:id', deletePost)
   router.delete('/api/users/signout', signUserOutAPI)
 
   app.use('/', router)

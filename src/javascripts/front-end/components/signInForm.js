@@ -44,7 +44,7 @@ export default function SignInForm(){
       .then(() => {
         sessionStorage.setItem('username', username.value)
         toast('Successfully signed in', {
-            autoClose: 2000,
+            autoClose: 1000,
           onClose: () => {
             document.location = "/"
           }
@@ -52,10 +52,7 @@ export default function SignInForm(){
 
       }).catch((error) => {
         toast('Failed to sign in', {
-            autoClose: 2000,
-          onClose: () => {
-            document.location = "/"
-          }
+          autoClose: 1000,
         })
       })
     }

@@ -8,3 +8,11 @@ $back-end-color: rgb(65, 64, 64);
   border-radius: 150px;
   background: linear-gradient(50deg, $front-end-color 45%, $back-end-color 45%);
 }
+
+.postContent{
+	.post{
+		border: 1px solid black;
+		border-radius: 15px;
+		width: fit-content;
+	}
+}
