@@ -7,7 +7,7 @@
     "keywords": [],
     "scripts": {
       "deploy": "npx webpack",
-      "start": "npx webpack-dev-server",
+      "start": "node server.js", 
       "server": "nodemon ./src/javascripts/back-end/server.js --exec babel-node",
       "db": "nodemon ./src/javascripts/back-end/seed-db.js --exec babel-node"
     },
