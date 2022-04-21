@@ -2,6 +2,8 @@ import express from 'express'
 
 import {indexPage} from './controllers/pages'
 import {signInPage, signUpPage, signUserUpAPI, signUserInAPI, signUserOutAPI} from './controllers/users'
+import {postPage} from './controllers/pages'
+
 
 let router = express.Router()
 
@@ -29,6 +31,7 @@ export function configureRoutes(app){
    ****************************************************************************/
   // Rendered Pages
   router.get('/', indexPage)
+  router.get('/post/:id', postPage)
 
   /*****************************************************************************
    * Section 1: API endpoints

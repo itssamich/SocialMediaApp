@@ -13,6 +13,8 @@ export const signUpPage = (req, res, next) => {
 
 // POST /api/users/signup
 export const signUserUpAPI = (req, res, next) => {
+ 
+
   let user = new User ({
     username: req.body.username,
     email: req.body.email
@@ -20,9 +22,9 @@ export const signUserUpAPI = (req, res, next) => {
 
   User.register(user, req.body.password, function(err, user) { 
     if (err) { 
-      res.json({success:false, message:"Your account could not be saved. Error: ", err}) 
+      res.json({success:false, message:"Account could not be created", err}) 
     }else{ 
-      res.json({success: true, message: "Your account was successfully created"}) 
+      res.json({success: true, message: "Account created successfully"}) 
     } 
 
     res.end()

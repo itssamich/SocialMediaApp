@@ -17,7 +17,7 @@ const validationSchema = yup.object({
 })
 
 export default function SignUpForm(){
-    const [showModule, setShow] = useState(false)
+    const [showModule, setShow] = useState(true)
     let {handleSubmit, handleChange, values, errors, setFieldValue} = useFormik({
       initialValues:{
         email: "",
@@ -44,9 +44,7 @@ export default function SignUpForm(){
           })
         }).catch((error) => {
           toast('Failed to sign up', {
-            onClose: () => {
-              document.location = "/"
-            }
+            
           })
         })
       }
@@ -60,43 +58,46 @@ export default function SignUpForm(){
         setShow(true)
     }
 
+	//I don't like how this is done, I need to redo it to allow for a password confirmation
+
     return (
-     <div className="signUpForm">
-                <form onSubmit={handleSubmit}>
-        <h1>Sign up</h1>
+		<Modal show={showModule} onHide={handleClose}>
+			<Modal.Title><h1>Sign Up</h1></Modal.Title>
+			<Modal.Body>
+				<div className="field">
+					<label htmlFor="email">Email</label>
+					<div className="control">
+						<input type="text" name="email" id="email" value={values.email} onChange={handleChange}/>
+						<VHelp message={errors.email}/>
+					</div>
+				</div>
 
-        <div className="field">
-          <label htmlFor="email">Email</label>
-          <div className="control">
-            <input type="text" name="email" id="email" value={values.email} onChange={handleChange}/>
-            <VHelp message={errors.email}/>
-          </div>
-        </div>
+				<div className="field">
+					<label htmlFor="username">Username</label>
+					<div className="control">
+						<input type="text" name="username" id="username" value={values.username} onChange={handleChange}/>
+						<VHelp message={errors.username}/>
+					</div>
+				</div>
 
-        <div className="field">
-          <label htmlFor="username">Username</label>
-          <div className="control">
-            <input type="text" name="username" id="username" value={values.username} onChange={handleChange}/>
-            <VHelp message={errors.username}/>
-          </div>
-        </div>
+				<div className="field">
+					<label htmlFor="password">Password</label>
+					<div className="control">
+						<input type="password" name="password" id="password" value={values.password} onChange={handleChange}/>  
+						<VHelp message={errors.password}/>
+					</div>
+				</div>
 
-        <div className="field">
-          <label htmlFor="password">Password</label>
-          <div className="control">
-            <input type="password" name="password" id="password" value={values.password} onChange={handleChange}/>  
-            <VHelp message={errors.password}/>
-          </div>
-        </div>
-
-        <div className="field">
-          <label></label>
-          <div className="control">
-            <button className="primary" type="submit">Submit</button>
-            <button className="primary" onClick={()=> document.location = '/'}>Cancel</button>
-          </div>
-        </div>
-      </form>  
-      </div>
+			</Modal.Body>
+			<Modal.Footer>
+			<div className="submitfield">
+				<label></label>
+				<div className="control">
+					<button className="btn btn-primary" type="submit" onClick={handleSubmit}>Submit</button>
+					<button className="btn btn-outline-primary" onClick={()=> document.location = '/'}>Cancel</button>
+				</div>
+			</div>
+			</Modal.Footer>
+		</Modal>
     )
 }

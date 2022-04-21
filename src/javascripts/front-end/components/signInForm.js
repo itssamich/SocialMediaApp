@@ -1,9 +1,10 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { useHistory, useParams } from 'react-router-dom'
 import { useFormik } from 'formik'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 import * as yup from 'yup'
+import { Modal } from 'react-bootstrap'
 
 toast.configure()
 
@@ -17,6 +18,8 @@ const validationSchema = yup.object({
 })
 
 export default function SignInForm(){
+	const [showModule, setShow] = useState(true)
+
   let {handleSubmit, handleChange, values, errors, setFieldValue} = useFormik({
     initialValues:{
       username: "",
@@ -59,32 +62,42 @@ export default function SignInForm(){
 
   //const history = useHistory()
 
+  	const handleClose = () => {
+		setShow(false)
+	}
+	const handleShow = () => {
+		setShow(true)
+	}
+
   return (
-    <form onSubmit={handleSubmit}>
-      <h1>Sign in</h1>
-      <div className="field">
-        <label htmlFor="username">Username</label>
-        <div className="control">
-          <input type="text" name="username" id="username" value={values.username} onChange={handleChange}/>
-          <VHelp message={errors.username}/>
-        </div>
-      </div>
+	<Modal show={showModule} onHide={handleClose}>
+		<Modal.Title><h1>Sign In</h1></Modal.Title>
+		<Modal.Body>
+			<div className="userfield">
+				<label htmlFor="username">Username</label>
+				<div className="control">
+					<input type="text" name="username" id="username" value={values.username} onChange={handleChange}/>
+					<VHelp message={errors.username}/>
+				</div>
+			</div>
 
-      <div className="field">
-        <label htmlFor="password">Password</label>
-        <div className="control">
-          <input type="password" name="password" id="password" value={values.password} onChange={handleChange}/>  
-          <VHelp message={errors.password}/>
-        </div>
-      </div>
-
-      <div className="field">
-        <label></label>
-        <div className="control">
-          <button className="primary" type="submit">Submit</button>
-          <button className="primary" onClick={()=> document.location = '/movies'}>Cancel</button>
-        </div>
-      </div>
-    </form>
+			<div className="passfield">
+				<label htmlFor="password">Password</label>
+				<div className="control">
+					<input type="password" name="password" id="password" value={values.password} onChange={handleChange}/>  
+					<VHelp message={errors.password}/>
+					</div>
+			</div>
+		</Modal.Body>
+		<Modal.Footer>
+		<div className="submitfield">
+			<label></label>
+			<div className="control">
+				<button className="btn btn-primary" type="submit" onClick={handleSubmit}>Submit</button>
+				<button className="btn btn-outline-primary" onClick={()=> document.location = '/'}>Cancel</button>
+			</div>
+		</div>
+		</Modal.Footer>
+	</Modal>
   )
 }

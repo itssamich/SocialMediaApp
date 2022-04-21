@@ -14,11 +14,13 @@ export default function SignOut({displayName}) {
       credentials: 'same-origin'
     })
     .then(data => {
+      //
       toast.success(`Successfully logged out`, {
-        autoClose: 2000,
+        autoClose: 1000,
         onClose: () => {
         document.location = "/"
       }})
+      sessionStorage.removeItem('username')
     })
     .catch(err => {
       toast.error(err.message)
