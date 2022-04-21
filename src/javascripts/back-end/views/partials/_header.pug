@@ -1,6 +1,9 @@
 nav(class="navbar navbar-expand-md navbar-dark bg-primary")
   .container-fluid
-    a.navbar-brand(href="/") Social App
+    if signedIn 
+      a.navbar-brand(href="/home") Social App
+    else 
+      a.navbar-brand(href="/") Social App
     button.navbar-toggler(type="button", data-bs-toggle="collapse", data-bs-target="#navbarSupportedContent")
       span.navbar-toggler-icon
     #navbarSupportedContent(class="collapse navbar-collapse")
@@ -11,7 +14,6 @@ nav(class="navbar navbar-expand-md navbar-dark bg-primary")
       ul#authul(class="navbar-nav mb-2 mb-lg-0")
         if signedIn 
           li#signout
-          //a(class="nav-link", href="/signout") Sign Out
         else 
           li.nav-item 
             a(class="nav-link", href="/signin") Sign In

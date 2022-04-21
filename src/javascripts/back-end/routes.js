@@ -2,7 +2,7 @@ import express from 'express'
 
 import {indexPage} from './controllers/pages'
 import {signInPage, signUpPage, signUserUpAPI, signUserInAPI, signUserOutAPI} from './controllers/users'
-import {postPage} from './controllers/pages'
+import {postPage, homePage, newPost, updateLikes, deletePost, newPostAPI} from './controllers/pages'
 
 
 let router = express.Router()
@@ -31,15 +31,19 @@ export function configureRoutes(app){
    ****************************************************************************/
   // Rendered Pages
   router.get('/', indexPage)
-  router.get('/post/:id', postPage)
+  router.get('/home', requireSignIn, indexPage)
+  //router.get('/post/:id', postPage)
+  router.get('/signin', signInPage)
+  router.get('/signup', signUpPage)
+  router.get('/post/new', requireSignIn, newPost)
 
   /*****************************************************************************
    * Section 1: API endpoints
    ****************************************************************************/
   // TODO
-  router.get('/signin', signInPage)
-  router.get('/signup', signUpPage)
 
+  
+  router.post('/api/post/new', newPostAPI)
   router.post('/api/users/signup', signUserUpAPI)
   router.post('/api/users/signin', signUserInAPI)
   router.delete('/api/users/signout', signUserOutAPI)

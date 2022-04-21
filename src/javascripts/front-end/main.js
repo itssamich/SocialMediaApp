@@ -13,6 +13,7 @@ import ReactDOM from 'react-dom'
 import SignInForm from './components/SignInForm'
 import SignOut from './components/SignOut'
 import SignUpForm from './components/SignUpForm'
+import NewPost from './components/newPost'
 
 if(document.querySelector('#signin')) {
   ReactDOM.render(<SignInForm/>, document.querySelector('#signin'))
@@ -20,6 +21,9 @@ if(document.querySelector('#signin')) {
   ReactDOM.render(<SignUpForm/>, document.querySelector('#signup'))
 } else if(document.querySelector('#signout')) {
   ReactDOM.render(<SignOut/>, document.querySelector('#signout'))
+}
+if(document.querySelector('#newpost')){
+  ReactDOM.render(<NewPost />, document.querySelector("#newpost"))
 }
 
 //ReactDOM.render(<App/>, document.querySelector('#main'))
