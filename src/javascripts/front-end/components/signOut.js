@@ -40,7 +40,8 @@ export default function SignOut({displayName}) {
 	// </div>
 	<DropdownButton className='nav-link' id="dropdown-basic-button" title={sessionStorage.getItem('username')}>
   		<Dropdown.Item href="#/action-1">Profile</Dropdown.Item>
-  		<Dropdown.Item href="#/action-2" onClick={signUserOut}>Sign out</Dropdown.Item>
+  		<Dropdown.Item href="#/action-2">Settings</Dropdown.Item>
+  		<Dropdown.Item href="#/action-3" onClick={signUserOut}>Sign out</Dropdown.Item>
 	</DropdownButton>
   )
 }
