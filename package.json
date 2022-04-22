@@ -1,7 +1,7 @@
 {
   "name": "social-app",
   "version": "1.1.0",
-  "main": "main.js",
+  "main": "server.js",
   "author": "Alex Klein",
   "license": "MIT",
   "keywords": [],
