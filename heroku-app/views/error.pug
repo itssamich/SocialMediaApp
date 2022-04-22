@@ -1,0 +1,5 @@
+extends layout.pug
+block content
+  h3 #{ err.message || 'Something wend wrong!' } (Code #{err.status})
+  div
+    pre #{err.stack}
